@@ -1,0 +1,19 @@
+{
+  "name": "fesmu",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "concurrently -n \"BACK,WEB,ADMIN\" -c \"bgBlue.bold,bgGreen.bold,bgMagenta.bold\" \"npm:dev:back\" \"npm:dev:web\" \"npm:dev:admin\"",
+    "dev:back": "cd fesmu-back && npm run start:dev",
+    "dev:web": "cd fesmu-web && npm run dev",
+    "dev:admin": "cd fesmu-admin && npm run dev"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "packageManager": "pnpm@10.6.2",
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
