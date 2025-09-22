@@ -3,10 +3,10 @@
 import { Form } from "@/shared/ui/form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useEffect, useState } from "react";
-import { useForm, UseFormReturn } from "react-hook-form";
+import { useForm, UseFormReturn, FieldValues } from "react-hook-form";
 import { z, ZodType } from "zod";
 
-interface CommonFromProps<T extends ZodType> {
+interface CommonFromProps<T extends ZodType<any, any, any>> {
   schema: T;
   data?: Partial<z.infer<T>>;
   defaultValues: z.infer<T>;
@@ -19,7 +19,7 @@ interface CommonFromProps<T extends ZodType> {
   ) => React.ReactNode;
 }
 
-function CommonFrom<T extends ZodType>({
+function CommonFrom<T extends ZodType<any, any, any>>({
   schema,
   defaultValues,
   onSubmit,
@@ -31,8 +31,8 @@ function CommonFrom<T extends ZodType>({
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const form = useForm<FormValues>({
-    resolver: zodResolver(schema),
-    defaultValues: { ...defaultValues, ...data },
+    resolver: zodResolver(schema) as any,
+    defaultValues: { ...defaultValues, ...data } as FormValues,
   });
 
   const handleSubmit = async (data: FormValues) => {
@@ -56,7 +56,7 @@ function CommonFrom<T extends ZodType>({
       console.log("Ошибка");
       console.log(form.formState.errors);
     }
-  }, [form]);
+  }, [form.formState.errors]);
 
   return (
     <Form {...form}>

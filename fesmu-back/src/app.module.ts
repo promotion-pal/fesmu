@@ -11,7 +11,7 @@ import { DutyModule } from './duty/duty.module';
 @Module({
   imports: [
     ConfigModule.forRoot({
-      envFilePath: path.resolve(__dirname, '../../.env'),
+      envFilePath: path.resolve(__dirname, './../../.env'),
       isGlobal: true,
     }),
     TypeOrmModule.forRootAsync({
