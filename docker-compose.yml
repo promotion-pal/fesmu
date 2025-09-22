@@ -5,13 +5,10 @@ services:
     container_name: fesmu-postgres
     image: postgres:15
     restart: always
-    environment:
-      POSTGRES_USER: root
-      POSTGRES_PASSWORD: password
-      POSTGRES_DB: fesmu
-      POSTGRES_PORT: 5432
+    env_file:
+      - .env
     ports:
-      - "5435:5432"
+      - "${POSTGRES_PORT}"
     volumes:
       - postgres_data:/var/lib/postgresql/data
     networks:
@@ -22,38 +19,25 @@ services:
       context: ./fesmu-back
       dockerfile: Dockerfile
     container_name: fesmu-backend
+    env_file:
+      - .env
     ports:
-      - "4000:3000"
-    environment:
-      POSTGRES_HOST: postgres
-      POSTGRES_DB: fesmu
-      POSTGRES_USER: root
-      POSTGRES_PASSWORD: password
-      POSTGRES_PORT: 5432
-      NEST_PORT: 3000
-      DATABASE_URL: postgresql://root:password@postgres:5432/fesmu
-    volumes:
-      - ./fesmu-back:/app
-      - /app/node_modules
+      - "${NEST_PORT}:4000"
     depends_on:
       - postgres
     restart: unless-stopped
     networks:
       - fesmu-network
 
-  frontend:
+  web:
     build:
       context: ./fesmu-web
       dockerfile: Dockerfile
-    container_name: fesmu-frontend
+    container_name: fesmu-web
     ports:
-      - "3001:3000"
-    environment:
-      REACT_APP_API_URL: http://backend:3000
-      REACT_APP_SITE_URL: http://localhost:3001
-    volumes:
-      - ./fesmu-web:/app
-      - /app/node_modules
+      - "${WEB_PORT}:3000"
+    env_file:
+      .env
     depends_on:
       - backend
     restart: unless-stopped
@@ -66,13 +50,9 @@ services:
       dockerfile: Dockerfile
     container_name: fesmu-admin
     ports:
-      - "3002:3000"
-    environment:
-      REACT_APP_API_URL: http://backend:3000
-      REACT_APP_ADMIN_URL: http://localhost:3002
-    volumes:
-      - ./fesmu-admin:/app
-      - /app/node_modules
+      - "${ADMIN_PORT}:5173"
+    env_file:
+      .env
     depends_on:
       - backend
     restart: unless-stopped
@@ -85,89 +65,3 @@ volumes:
 networks:
   fesmu-network:
     driver: bridge
-
-
-# version: "3.8"
-
-# services:
-#   postgres:
-#     container_name: fesmu-postgres
-#     image: postgres:15
-#     restart: always
-#     environment:
-#       # - POSTGRES_USER=${POSTGRES_USER}
-#       # - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
-#       # - POSTGRES_DB=${POSTGRES_DB}
-
-#       - POSTGRES_USER=${root}
-#       - POSTGRES_PASSWORD=${password}
-#       - POSTGRES_DB=${postgres}
-#     ports:
-#       - ${5435}:5432
-#     volumes:
-#       - postgres_data:/var/lib/postgresql/data
-#     networks:
-#       - fesmu-network
-
-#   backend:
-#     build:
-#       context: ./fesmu-back
-#       dockerfile: Dockerfile
-#     container_name: fesmu-backend
-#     ports:
-#       - "3001:3000"
-#     env_file:
-#       - ./.env
-#     volumes:
-#       - ./fesmu-back:/app
-#       - /app/node_modules
-#     depends_on:
-#       - postgres
-#     restart: unless-stopped
-#     networks:
-#       - fesmu-network
-
-#   frontend:
-#     build:
-#       context: ./fesmu-web
-#       dockerfile: Dockerfile
-#     container_name: fesmu-frontend
-#     ports:
-#       - "3001:3000"
-#     environment:
-#       - REACT_APP_API_URL=http://localhost:${NEST_PORT}
-#       - REACT_APP_SITE_URL=${SITE_URL}
-#     volumes:
-#       - ./fesmu-web:/app
-#       - /app/node_modules
-#     depends_on:
-#       - backend
-#     restart: unless-stopped
-#     networks:
-#       - fesmu-network
-
-#   admin:
-#     build:
-#       context: ./fesmu-admin
-#       dockerfile: Dockerfile
-#     container_name: fesmu-admin
-#     ports:
-#       - "3002:3000"
-#     environment:
-#       - REACT_APP_API_URL=http://localhost:${NEST_PORT}
-#       - REACT_APP_ADMIN_URL=${ADMIN_URL}
-#     volumes:
-#       - ./fesmu-admin:/app
-#       - /app/node_modules
-#     depends_on:
-#       - backend
-#     restart: unless-stopped
-#     networks:
-#       - fesmu-network
-
-# volumes:
-#   postgres_data:
-
-# networks:
-#   fesmu-network:
-#     driver: bridge

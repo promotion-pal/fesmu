@@ -2,7 +2,6 @@ import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { ConfigModule, ConfigService } from '@nestjs/config';
-import * as path from 'path';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { TenantsModule } from './tenants/tenants.module';
 import { FloorsModule } from './floors/floors.module';
@@ -11,7 +10,6 @@ import { DutyModule } from './duty/duty.module';
 @Module({
   imports: [
     ConfigModule.forRoot({
-      envFilePath: path.resolve(__dirname, './../../.env'),
       isGlobal: true,
     }),
     TypeOrmModule.forRootAsync({

@@ -5,7 +5,7 @@ import {
   fetchUtils,
 } from "react-admin";
 
-const apiUrl = "http://localhost:4000";
+const apiUrl = process.env.NEXT_PUBLIC_API;
 const httpClient = fetchUtils.fetchJson;
 
 export const dataProvider = {
