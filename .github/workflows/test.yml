@@ -19,8 +19,8 @@ jobs:
 
       - name: Run tests in Docker
         run: |
-          docker-compose -f docker-compose.yml up --build --abort-on-container-exit
+          docker compose -f docker-compose.yml up --build --abort-on-container-exit
 
       - name: Cleanup test containers
         run: |
-          docker-compose -f docker-compose.yml down -v
+          docker compose -f docker-compose.yml down -v
