@@ -35,9 +35,8 @@ jobs:
           host: ${{ secrets.SERVER_IP }}
           username: ${{ secrets.SERVER_USER }}
           key: ${{ secrets.SERVER_SSH_KEY }}
-          passphrase: ${{ secrets.SSH_PASSPHRASE }}
           script: |
-            cd ~/mirtraveler_frontend
+            cd ~/fesmu
             git pull
             docker compose down
             docker compose up -d --build
