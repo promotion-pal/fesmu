@@ -1,7 +1,7 @@
 services:
   postgres:
     container_name: fesmu-postgres
-    image: dockerhub.ir/postgres:15
+    image: dockerhub.gcr.io/postgres:15
     restart: always
     ports:
       - "5432:5432" 
