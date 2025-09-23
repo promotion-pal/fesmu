@@ -5,7 +5,7 @@ WORKDIR /app
 RUN npm install -g pnpm
 
 COPY package*.json ./
-COPY pnpm-lock.yaml ./
+# COPY pnpm-lock.yaml ./
 
 RUN pnpm install
 RUN ls -la node_modules/.bin/next 
