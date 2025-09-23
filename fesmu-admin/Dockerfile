@@ -16,7 +16,7 @@
 
 # CMD ["pnpm", "run", "dev"]
 
-FROM node:18-alpine
+FROM mirror.gcr.io/library/node:18-alpine 
 
 RUN npm install -g pnpm
 
