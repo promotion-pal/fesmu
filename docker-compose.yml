@@ -26,7 +26,7 @@ services:
       - traefik-network  
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.fesmu-api.rule=Host(`api.fesmu.localhost`)"
+      - "traefik.http.routers.fesmu-api.rule=Host(`api.fesmu.promotion-pal.ru`)"
       - "traefik.http.routers.fesmu-api.entrypoints=web"
       - "traefik.http.services.fesmu-api.loadbalancer.server.port=4000"
 
@@ -44,7 +44,7 @@ services:
       - traefik-network 
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.fesmu-web.rule=Host(`fesmu.localhost`)"
+      - "traefik.http.routers.fesmu-web.rule=Host(`fesmu.promotion-pal.ru`)"
       - "traefik.http.routers.fesmu-web.entrypoints=web"
       - "traefik.http.services.fesmu-web.loadbalancer.server.port=3000"
 
@@ -62,7 +62,7 @@ services:
       - traefik-network  
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.fesmu-admin.rule=Host(`admin.fesmu.localhost`)"
+      - "traefik.http.routers.fesmu-admin.rule=Host(`admin.fesmu.promotion-pal.ru`)"
       - "traefik.http.routers.fesmu-admin.entrypoints=web"
       - "traefik.http.services.fesmu-admin.loadbalancer.server.port=4173"
 
