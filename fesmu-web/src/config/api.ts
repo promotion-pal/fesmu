@@ -1,1 +1,1 @@
-export const API_URL = "http://api.fesmu.localhost";
+export const API_URL = process.env.NEXT_PUBLIC_API;
