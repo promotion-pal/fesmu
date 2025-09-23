@@ -1,7 +1,8 @@
 services:
   postgres:
     container_name: fesmu-postgres
-    image: mirror.gcr.io/library/postgres:15 
+    # image: mirror.gcr.io/library/postgres:15 
+    image: postgres:15 
     restart: always
     ports:
       - "5432:5432" 
