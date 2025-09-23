@@ -5,6 +5,7 @@ import { CreateDuty } from "@/widgets/duty/schema";
 class DutyService {
   async getRecorded(floorNumber: number): Promise<Duty[]> {
     const res = await fetch(`${API_URL}/duty/recorded/${floorNumber}`);
+    console.log(res);
     return await res.json();
   }
 

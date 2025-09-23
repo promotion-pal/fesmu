@@ -1,18 +1,19 @@
-import { Controller, Get } from '@nestjs/common';
+import { Body, Controller, Get, Post } from '@nestjs/common';
 import { FloorsService } from './floors.service';
+import { CreateFloorDto } from './dto/create-floor.dto';
 
 @Controller('floors')
 export class FloorsController {
   constructor(private readonly floorsService: FloorsService) {}
 
-  // @Post()
-  // create(@Body() createFloorDto: CreateFloorDto) {
-  //   return this.floorsService.create(createFloorDto);
-  // }
-
   @Get()
-  findAll() {
-    return this.floorsService.findAll();
+  async findAll() {
+    return await this.floorsService.findAll();
+  }
+
+  @Post()
+  async create(@Body() createFloorDto: CreateFloorDto) {
+    return await this.floorsService.create(createFloorDto);
   }
 
   // @Get(':id')

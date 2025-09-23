@@ -1,18 +1,16 @@
-version: "3.8"
-
 services:
   postgres:
     container_name: fesmu-postgres
     image: postgres:15
     restart: always
+    ports:
+      - "5432:5432" 
     env_file:
       - .env
-    ports:
-      - "${POSTGRES_PORT}"
     volumes:
       - postgres_data:/var/lib/postgresql/data
     networks:
-      - fesmu-network
+      - traefik-network  
 
   backend:
     build:
@@ -21,47 +19,57 @@ services:
     container_name: fesmu-backend
     env_file:
       - .env
-    ports:
-      - "${NEST_PORT}:4000"
     depends_on:
       - postgres
     restart: unless-stopped
     networks:
-      - fesmu-network
+      - traefik-network  
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.fesmu-api.rule=Host(`api.fesmu.localhost`)"
+      - "traefik.http.routers.fesmu-api.entrypoints=web"
+      - "traefik.http.services.fesmu-api.loadbalancer.server.port=4000"
 
   web:
     build:
       context: ./fesmu-web
       dockerfile: Dockerfile
     container_name: fesmu-web
-    ports:
-      - "${WEB_PORT}:3000"
     env_file:
-      .env
+      - .env
     depends_on:
       - backend
     restart: unless-stopped
     networks:
-      - fesmu-network
+      - traefik-network 
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.fesmu-web.rule=Host(`fesmu.localhost`)"
+      - "traefik.http.routers.fesmu-web.entrypoints=web"
+      - "traefik.http.services.fesmu-web.loadbalancer.server.port=3000"
 
   admin:
     build:
       context: ./fesmu-admin
       dockerfile: Dockerfile
     container_name: fesmu-admin
-    ports:
-      - "${ADMIN_PORT}:5173"
     env_file:
-      .env
+      - .env
     depends_on:
       - backend
     restart: unless-stopped
     networks:
-      - fesmu-network
+      - traefik-network  
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.fesmu-admin.rule=Host(`admin.fesmu.localhost`)"
+      - "traefik.http.routers.fesmu-admin.entrypoints=web"
+      - "traefik.http.services.fesmu-admin.loadbalancer.server.port=4173"
 
 volumes:
   postgres_data:
 
 networks:
-  fesmu-network:
-    driver: bridge
+  traefik-network:
+    external: true
+    name: traefik-network
