@@ -7,7 +7,7 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
   const configService = app.get(ConfigService);
-  const PORT = configService.getOrThrow<number>('NEST_PORT');
+  const PORT = 4000;
   const ADMIN_URL = configService.getOrThrow<string>('ADMIN_URL');
   const SITE_URL = configService.getOrThrow<string>('SITE_URL');
 
