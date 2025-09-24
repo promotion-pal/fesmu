@@ -19,7 +19,7 @@ const NavigationCardDutyUi = ({ styleWrapper }: { styleWrapper?: string }) => {
           <Image
             fill
             src="/img/cook.mov"
-            alt="Дежурство на кухне"
+            alt="Запись на дежурство"
             className="object-cover transition-transform duration-500 group-hover:scale-105"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
@@ -27,7 +27,7 @@ const NavigationCardDutyUi = ({ styleWrapper }: { styleWrapper?: string }) => {
 
         <CardHeader className="pb-2 mt-3">
           <CardTitle className="text-xl font-semibold text-foreground">
-            Дежурство на кухне
+            Запись на дежурство
           </CardTitle>
         </CardHeader>
 

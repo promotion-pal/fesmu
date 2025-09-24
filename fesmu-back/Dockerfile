@@ -1,4 +1,3 @@
-# FROM mirror.gcr.io/node:20-alpine
 FROM node:20-alpine
 
 EXPOSE 4000
