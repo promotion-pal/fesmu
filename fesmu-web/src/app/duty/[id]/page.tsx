@@ -153,7 +153,7 @@ export default function RecordDutyPage() {
 
             <Button
               type="submit"
-              disabled={!form.formState.isDirty || !form.formState.isValid}
+              disabled={!form.formState.isValid}
               variant="secondary"
               className="mt-5 w-full"
             >
