@@ -8,8 +8,8 @@ async function bootstrap() {
 
   const configService = app.get(ConfigService);
   const PORT = configService.getOrThrow<number>('NEST_PORT');
-  const ADMIN_URL = configService.getOrThrow<number>('ADMIN_URL');
-  const SITE_URL = configService.getOrThrow<number>('SITE_URL');
+  const ADMIN_URL = configService.getOrThrow<string>('ADMIN_URL');
+  const SITE_URL = configService.getOrThrow<string>('SITE_URL');
 
   app.enableCors({
     origin: [ADMIN_URL, SITE_URL],
