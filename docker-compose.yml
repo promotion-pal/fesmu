@@ -27,9 +27,10 @@ services:
       - traefik-network  
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.fesmu-api.rule=Host(`api.fesmu.promotion-pal.ru`)"
-      - "traefik.http.routers.fesmu-api.entrypoints=web"
+      - "traefik.http.routers.fesmu-api-secure.rule=Host(`api.fesmu.promotion-pal.ru`)"
+      - "traefik.http.routers.fesmu-api-secure.entrypoints=web"
       - "traefik.http.services.fesmu-api.loadbalancer.server.port=4000"
+      - "traefik.http.routers.fesmu-api-secure.tls.certresolver=letsencrypt"
 
   web:
     build:
@@ -45,9 +46,10 @@ services:
       - traefik-network 
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.fesmu-web.rule=Host(`fesmu.promotion-pal.ru`)"
-      - "traefik.http.routers.fesmu-web.entrypoints=web"
+      - "traefik.http.routers.fesmu-web-secure.rule=Host(`fesmu.promotion-pal.ru`)"
+      - "traefik.http.routers.fesmu-web-secure.entrypoints=web"
       - "traefik.http.services.fesmu-web.loadbalancer.server.port=3000"
+      - "traefik.http.routers.fesmu-web-secure.tls.certresolver=letsencrypt"
 
   admin:
     build:
@@ -63,9 +65,10 @@ services:
       - traefik-network  
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.fesmu-admin.rule=Host(`admin.fesmu.promotion-pal.ru`)"
-      - "traefik.http.routers.fesmu-admin.entrypoints=web"
+      - "traefik.http.routers.fesmu-admin-secure.rule=Host(`admin.fesmu.promotion-pal.ru`)"
+      - "traefik.http.routers.fesmu-admin-secure.entrypoints=web"
       - "traefik.http.services.fesmu-admin.loadbalancer.server.port=4173"
+      - "traefik.http.routers.fesmu-admin-secure.tls.certresolver=letsencrypt"
 
 volumes:
   postgres_data:
