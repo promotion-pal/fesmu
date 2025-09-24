@@ -51,7 +51,7 @@ export default function RecordDutyPage() {
           first_name: "",
           patronymic: "",
           room: "",
-          faculty: "pediatric",
+          faculty: "",
           group: "",
           date: new Date(),
         }}

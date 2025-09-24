@@ -10,6 +10,7 @@ import { DutyModule } from './duty/duty.module';
 @Module({
   imports: [
     ConfigModule.forRoot({
+      // envFilePath: '../../.env',
       isGlobal: true,
     }),
     TypeOrmModule.forRootAsync({
