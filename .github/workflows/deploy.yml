@@ -1,4 +1,4 @@
-name: Deploy Prom Pal
+name: Deploy Fesmu
 on:
   push:
     branches:
