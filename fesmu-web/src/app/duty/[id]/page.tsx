@@ -10,7 +10,7 @@ import { cn } from "@/shared/lib/utils";
 import { Button } from "@/shared/ui/button";
 import { CommonWrapper, WrapperProps } from "@/widgets/common/wrapper";
 import { schemaTenantDuty } from "@/widgets/duty/schema";
-import { useParams } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import { FC, useEffect, useState } from "react";
 import { toast } from "sonner";
 
@@ -34,10 +34,11 @@ export default function RecordDutyPage() {
 
   useEffect(() => {
     dutyService.getRecorded(Number(id)).then((res) => {
-      console.log(res);
       setDuty(res);
     });
   }, []);
+
+  const router = useRouter();
 
   return (
     <CommonWrapper back={ROUTE.DUTY()} styleWrapper="container pb-10">
@@ -45,11 +46,11 @@ export default function RecordDutyPage() {
         schema={schemaTenantDuty}
         defaultValues={{
           floorNumber: Number(id),
-          phone: "+79941387422",
-          last_name: "Коноплев",
-          first_name: "Ростислав",
-          patronymic: "Русланович",
-          room: "301",
+          phone: "+7",
+          last_name: "",
+          first_name: "",
+          patronymic: "",
+          room: "",
           faculty: "pediatric",
           group: "",
           date: new Date(),
@@ -58,6 +59,9 @@ export default function RecordDutyPage() {
           try {
             await dutyService.create(data);
             toast("Вы записаны");
+            setTimeout(() => {
+              router.push(ROUTE.DUTY());
+            }, 1500);
           } catch (error) {
             console.log(error);
             toast("Не удалось записаться");
@@ -70,6 +74,7 @@ export default function RecordDutyPage() {
               title="Данные"
               styleChildren="grid md:grid-cols-3 items-center gap-4"
             >
+              <p>Запись на {id} этаж</p>
               <CommonTextField
                 label="Имя"
                 name="first_name"
@@ -146,7 +151,12 @@ export default function RecordDutyPage() {
               disabledDates={duty.map((item) => new Date(item.date))}
             />
 
-            <Button type="submit" variant="secondary" className="mt-5 w-full">
+            <Button
+              type="submit"
+              disabled={!form.formState.isDirty || !form.formState.isValid}
+              variant="secondary"
+              className="mt-5 w-full"
+            >
               Записаться
             </Button>
           </>

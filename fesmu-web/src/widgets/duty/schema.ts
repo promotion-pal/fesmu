@@ -9,7 +9,6 @@ const FacultyZodEnum = z.enum([
 
 const schemaDuty = z.object({
   floorNumber: z.coerce.number(),
-  // date: z.string().regex(/^\d{2}\-\d{2}\-\d{4}$/, "Неверный формат даты"),
   date: z.date(),
 });
 
