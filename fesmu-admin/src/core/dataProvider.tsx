@@ -5,8 +5,9 @@ import {
   fetchUtils,
 } from "react-admin";
 
-const apiUrl = "http://api.fesmu.promotion-pal.ru";
-// const apiUrl = process.env.REACT_APP_API;
+const apiUrl = process.env.REACT_APP_API
+  ? process.env.REACT_APP_API
+  : "https://api.fesmu.promotion-pal.ru";
 const httpClient = fetchUtils.fetchJson;
 
 export const dataProvider = {
