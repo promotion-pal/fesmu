@@ -38,15 +38,6 @@ function CalendarDuty({ disabledDates = [], form, name }: CalendarDutyProps) {
     return isServerDisabled;
   };
 
-  // const handleDateSelect = (date: Date | undefined) => {
-  //   if (date && !isDateDisabled(date)) {
-  //     const dateWithoutTime = new Date(date);
-  //     dateWithoutTime.setHours(0, 0, 0, 0);
-  //     setSelectedDate(dateWithoutTime);
-  //     form.setValue(name, dateWithoutTime);
-  //   }
-  // };
-
   const handleDateSelect = (date: Date | undefined) => {
     if (date && !isDateDisabled(date)) {
       const dateUTC = new Date(

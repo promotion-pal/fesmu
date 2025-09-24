@@ -151,12 +151,7 @@ export default function RecordDutyPage() {
               disabledDates={duty.map((item) => new Date(item.date))}
             />
 
-            <Button
-              type="submit"
-              disabled={!form.formState.isValid}
-              variant="secondary"
-              className="mt-5 w-full"
-            >
+            <Button type="submit" variant="secondary" className="mt-5 w-full">
               Записаться
             </Button>
           </>
