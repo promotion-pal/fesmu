@@ -66,7 +66,7 @@ export default function RecordDutyPage() {
 
   return (
     <CommonWrapper back={ROUTE.DUTY()} styleWrapper="container pb-15">
-      <div className="flex justify-between items-center mb-4 p-2 bg-blue-50 rounded-lg">
+      {/* <div className="flex justify-between items-center mb-4 p-2 bg-blue-50 rounded-lg">
         <span className="text-sm text-blue-700">
           {loading ? "Обновление данных..." : "Данные обновлены"}
         </span>
@@ -83,7 +83,7 @@ export default function RecordDutyPage() {
         >
           {loading ? "Обновление..." : "Обновить"}
         </Button>
-      </div>
+      </div> */}
 
       <CommonFrom
         schema={schemaTenantDuty}
