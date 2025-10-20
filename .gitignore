@@ -37,4 +37,7 @@ package-lock.json
 bun.lockb
 /app/generated/prisma
 
-/fesmu-web/
+/fesmu-web/node_modules
+/fesmu-back/node_modules
+/fesmu-admin/node_modules
+
