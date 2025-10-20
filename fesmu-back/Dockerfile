@@ -1,4 +1,5 @@
-FROM node:20-alpine
+# FROM node:20-alpine
+FROM registry.cn-hangzhou.aliyuncs.com/google_containers/node:20-alpine
 
 EXPOSE 4000
 
