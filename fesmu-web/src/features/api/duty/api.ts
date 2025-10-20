@@ -18,6 +18,12 @@ class DutyService {
         },
         body: JSON.stringify(data),
       });
+
+      if (!res.ok) {
+        const error = new Error("Не удалось записаться");
+        throw error;
+      }
+
       return await res.json();
     } catch (error) {
       console.log(error);

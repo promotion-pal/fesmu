@@ -54,7 +54,8 @@ const ListFloorsDutyUi = ({ styleWrapper }: { styleWrapper?: string }) => {
       {Array.from({ length: 14 }, (_, i) => {
         const floor = i + 1;
 
-        if ([2, 3, 4, 6, 7, 8, 9, 11, 12, 13, 14].includes(floor)) return null;
+        if ([1, 2, 3, 4, 6, 7, 8, 9, 10, 11, 12, 13, 14].includes(floor))
+          return null;
 
         return (
           <Link
