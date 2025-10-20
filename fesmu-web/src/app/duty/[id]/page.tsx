@@ -103,11 +103,9 @@ export default function RecordDutyPage() {
             await dutyService.create(data);
             toast.success("Вы записаны");
 
-            fetchDutyData();
-
-            setTimeout(() => {
-              router.push(ROUTE.DUTY());
-            }, 1000);
+            // setTimeout(() => {
+            //   router.push(ROUTE.DUTY());
+            // }, 1000);
           } catch (error) {
             toast.error("Не удалось записаться");
             fetchDutyData();
