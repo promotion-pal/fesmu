@@ -65,7 +65,7 @@ export default function RecordDutyPage() {
   const router = useRouter();
 
   return (
-    <CommonWrapper back={ROUTE.DUTY()} styleWrapper="container pb-10">
+    <CommonWrapper back={ROUTE.DUTY()} styleWrapper="container pb-15">
       <div className="flex justify-between items-center mb-4 p-2 bg-blue-50 rounded-lg">
         <span className="text-sm text-blue-700">
           {loading ? "Обновление данных..." : "Данные обновлены"}
@@ -102,10 +102,9 @@ export default function RecordDutyPage() {
           try {
             await dutyService.create(data);
             toast.success("Вы записаны");
-
-            // setTimeout(() => {
-            //   router.push(ROUTE.DUTY());
-            // }, 1000);
+            setTimeout(() => {
+              router.push(ROUTE.DUTY());
+            }, 1000);
           } catch (error) {
             toast.error("Не удалось записаться");
             fetchDutyData();
@@ -198,7 +197,7 @@ export default function RecordDutyPage() {
               </WrapperForm>
 
               <div className="mt-6">
-                {loading ? (
+                {/* {loading ? (
                   <div className="flex justify-center items-center py-8 border rounded-lg">
                     <p className="text-gray-500">Загрузка доступных дат...</p>
                   </div>
@@ -206,12 +205,22 @@ export default function RecordDutyPage() {
                   <CalendarDuty
                     form={form}
                     name="date"
-                    disabledDates={duty.map((item) => new Date(item.date))}
+                    disabledDates={duty.map(
+                      (item) => new Date(item.date) || loading
+                    )}
                   />
-                )}
+                )} */}
+
+                <CalendarDuty
+                  form={form}
+                  name="date"
+                  disabledDates={duty.map(
+                    (item) => new Date(item.date) || loading
+                  )}
+                />
               </div>
 
-              <Button type="submit" variant="secondary" className="mt-5 w-full">
+              <Button type="submit" className="mt-5 w-full">
                 Записаться
               </Button>
             </>
