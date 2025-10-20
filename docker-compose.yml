@@ -1,16 +1,16 @@
 services:
   postgres:
     container_name: fesmu-postgres
-    image: postgres:15 
+    image: postgres:15
     restart: always
     ports:
-      - "5432:5432" 
+      - "5432:5432"
     env_file:
       - .env
     volumes:
       - postgres_data:/var/lib/postgresql/data
     networks:
-      - traefik-network  
+      - traefik-network
 
   backend:
     build:
@@ -23,7 +23,7 @@ services:
       - postgres
     restart: unless-stopped
     networks:
-      - traefik-network  
+      - traefik-network
     labels:
       - "traefik.enable=true"
       # HTTP роутер (перенаправление на HTTPS)
@@ -47,7 +47,7 @@ services:
       - backend
     restart: unless-stopped
     networks:
-      - traefik-network 
+      - traefik-network
     labels:
       - "traefik.enable=true"
       # HTTP роутер (перенаправление на HTTPS)
@@ -71,7 +71,7 @@ services:
       - backend
     restart: unless-stopped
     networks:
-      - traefik-network  
+      - traefik-network
     labels:
       - "traefik.enable=true"
       # HTTP роутер (перенаправление на HTTPS)

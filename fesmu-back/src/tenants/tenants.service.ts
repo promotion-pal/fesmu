@@ -16,8 +16,6 @@ export class TenantsService {
   }
 
   async create(dto: CreateTenantDto) {
-    console.log(dto);
-
     const tenant = await this.findOneWithConditions(dto);
 
     if (tenant) {
