@@ -1,5 +1,5 @@
-FROM node:20-alpine
-# FROM mirror.gcr.io/library/node:18.20.3-alpine3.20
+# FROM node:20-alpine
+FROM mirror.gcr.io/library/node:20-alpine
 
 EXPOSE 4000
 
