@@ -105,10 +105,12 @@ export default function RecordDutyPage() {
 
             fetchDutyData();
 
-            router.push(ROUTE.DUTY());
+            setTimeout(() => {
+              router.push(ROUTE.DUTY());
+            }, 1000);
           } catch (error) {
-            console.log(error);
             toast.error("Не удалось записаться");
+            fetchDutyData();
           }
         }}
       >

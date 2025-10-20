@@ -10,14 +10,19 @@ class DutyService {
   }
 
   async create(data: CreateDuty) {
-    const res = await fetch(`${API_URL}/duty/`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    });
-    return await res.json();
+    try {
+      const res = await fetch(`${API_URL}/duty/`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+      return await res.json();
+    } catch (error) {
+      console.log(error);
+      throw error;
+    }
   }
 }
 
