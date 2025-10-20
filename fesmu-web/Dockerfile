@@ -1,5 +1,5 @@
 # FROM node:18-alpine
-FROM registry.cn-hangzhou.aliyuncs.com/google_containers/node:18-alpine
+FROM docker.mirrors.ustc.edu.cn/library/node:20-alpine
 
 WORKDIR /app
 
