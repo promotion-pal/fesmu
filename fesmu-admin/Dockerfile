@@ -1,5 +1,5 @@
-FROM node:18-alpine 
-# FROM mirror.gcr.io/library/node:18.20.3-alpine3.20
+# FROM node:18-alpine 
+FROM mirror.gcr.io/library/node:18.20.3-alpine3.20
 
 RUN npm install -g pnpm
 
@@ -15,4 +15,4 @@ RUN pnpm run build
 
 EXPOSE 4173
 
-CMD ["pnpm", "run", "serve"]
+CMD ["pnpm", "run"]
