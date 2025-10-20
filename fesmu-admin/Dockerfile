@@ -15,4 +15,4 @@ RUN pnpm run build
 
 EXPOSE 4173
 
-CMD ["pnpm", "run"]
+CMD ["pnpm", "run", "serve"]
