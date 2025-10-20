@@ -1,6 +1,6 @@
 services:
   postgres:
-    container_name: fesmu-postgres
+    container_name: fesmu-pog
     image: postgres:15
     restart: always
     ports:
@@ -50,11 +50,9 @@ services:
       - traefik-network
     labels:
       - "traefik.enable=true"
-      # HTTP роутер (перенаправление на HTTPS)
       - "traefik.http.routers.fesmu-web.rule=Host(`fesmu.promotion-pal.ru`)"
       - "traefik.http.routers.fesmu-web.entrypoints=web"
       - "traefik.http.routers.fesmu-web.middlewares=redirect-to-https"
-      # HTTPS роутер (основной)
       - "traefik.http.routers.fesmu-web-secure.rule=Host(`fesmu.promotion-pal.ru`)"
       - "traefik.http.routers.fesmu-web-secure.entrypoints=websecure"
       - "traefik.http.routers.fesmu-web-secure.tls.certresolver=letsencrypt"
@@ -74,11 +72,9 @@ services:
       - traefik-network
     labels:
       - "traefik.enable=true"
-      # HTTP роутер (перенаправление на HTTPS)
       - "traefik.http.routers.fesmu-admin.rule=Host(`admin.fesmu.promotion-pal.ru`)"
       - "traefik.http.routers.fesmu-admin.entrypoints=web"
       - "traefik.http.routers.fesmu-admin.middlewares=redirect-to-https"
-      # HTTPS роутер (основной)
       - "traefik.http.routers.fesmu-admin-secure.rule=Host(`admin.fesmu.promotion-pal.ru`)"
       - "traefik.http.routers.fesmu-admin-secure.entrypoints=websecure"
       - "traefik.http.routers.fesmu-admin-secure.tls.certresolver=letsencrypt"
