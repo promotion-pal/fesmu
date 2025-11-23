@@ -1,6 +1,13 @@
 services:
-  postgres-test:
-    image: postgres:15
-    env_file: .env
+  postgres:
+    container_name: "fesmu-db"
+    image: postgres:latest
+    env_file:
+      - .env
     ports:
-      - "${POSTGRES_PORT}"
+      - "${SERVER_POSTGRES_PORT}:${POSTGRES_PORT}"
+    volumes:
+      - postgres_data:/var/lib/postgresql
+
+volumes:
+  postgres_data:

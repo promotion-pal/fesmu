@@ -38,6 +38,11 @@ bun.lockb
 /app/generated/prisma
 
 /fesmu-web/node_modules
-/fesmu-back/node_modules
-/fesmu-admin/node_modules
+/fesmu-web/.next
+/fesmu-web/pnpm-lock.yaml
 
+/fesmu-back/node_modules
+/fesmu-back/pnpm-lock.yaml
+
+/fesmu-admin/node_modules
+/fesmu-admin/pnpm-lock.yaml

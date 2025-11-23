@@ -8,8 +8,14 @@ async function bootstrap() {
 
   const configService = app.get(ConfigService);
   const PORT = 4000;
-  const ADMIN_URL = configService.getOrThrow<string>('ADMIN_URL');
-  const SITE_URL = configService.getOrThrow<string>('SITE_URL');
+  const ADMIN_URL = configService.getOrThrow<string>(
+    'ADMIN_URL',
+    'http://localhost:3000',
+  );
+  const SITE_URL = configService.getOrThrow<string>(
+    'SITE_URL',
+    'http://localhost:3000',
+  );
 
   app.enableCors({
     origin: [ADMIN_URL, SITE_URL],

@@ -22,7 +22,7 @@ const NavigationCardDutyUi = ({ styleWrapper }: { styleWrapper?: string }) => {
             alt="Запись на дежурство"
             className="object-cover transition-transform duration-500 group-hover:scale-105"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+          <div className="absolute inset-0 from-black/60 via-transparent to-transparent" />
         </div>
 
         <CardHeader className="pb-2 mt-3">
@@ -54,8 +54,7 @@ const ListFloorsDutyUi = ({ styleWrapper }: { styleWrapper?: string }) => {
       {Array.from({ length: 14 }, (_, i) => {
         const floor = i + 1;
 
-        if ([1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 12, 13, 14].includes(floor))
-          return null;
+        if ([1, 7, 8].includes(floor)) return null;
 
         return (
           <Link

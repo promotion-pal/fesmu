@@ -20,6 +20,9 @@ importers:
       '@mui/material':
         specifier: ^7.0.1
         version: 7.3.4(@emotion/react@11.14.0(@types/react@18.3.26)(react@19.2.0))(@emotion/styled@11.14.1(@emotion/react@11.14.0(@types/react@18.3.26)(react@19.2.0))(@types/react@18.3.26)(react@19.2.0))(@types/react@18.3.26)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
+      jsonexport:
+        specifier: 3.2.0
+        version: 3.2.0
       react:
         specifier: ^19.0.0
         version: 19.2.0

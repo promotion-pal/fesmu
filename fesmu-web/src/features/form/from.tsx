@@ -20,11 +20,11 @@ interface CommonFromProps<T extends ZodType<any, any, any>> {
 }
 
 function CommonFrom<T extends ZodType<any, any, any>>({
+  data,
   schema,
-  defaultValues,
   onSubmit,
   children,
-  data,
+  defaultValues,
 }: CommonFromProps<T>) {
   type FormValues = z.infer<T>;
   const [error, setError] = useState<string | null>(null);
