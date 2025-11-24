@@ -10,7 +10,7 @@ async function bootstrap() {
   const PORT = 4000;
   const ADMIN_URL = configService.getOrThrow<string>(
     'ADMIN_URL',
-    'http://localhost:3000',
+    'http://localhost:4173',
   );
   const SITE_URL = configService.getOrThrow<string>(
     'SITE_URL',
