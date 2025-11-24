@@ -92,14 +92,14 @@ export default function RecordDutyPage() {
             const currentHour = +getCurrentVladivostokHour();
 
             if (course === 4 || course === 5) {
-              if (currentHour < 15 || currentHour >= 19) {
+              if (currentHour < 17 || currentHour >= 19) {
                 toast.error(
                   "4-5 курс может записываться только с 17:00 до 19:00"
                 );
                 return;
               }
             } else if (course >= 1 && course <= 3) {
-              if (currentHour < 16 || currentHour >= 18) {
+              if (currentHour < 19 || currentHour >= 23) {
                 toast.error(
                   "1-3 курс может записываться только с 19:00 до 23:00"
                 );
