@@ -1,17 +1,13 @@
 import { cn } from "@/shared/lib/utils";
-import {
-  ArrowRightCircleIcon,
-  ChevronLeftIcon,
-  ChevronRightIcon,
-} from "lucide-react";
+import { ChevronLeftIcon } from "lucide-react";
 import Link from "next/link";
 import { FC, ReactNode } from "react";
 
 interface WrapperProps {
   title?: string;
   children: ReactNode;
-  styleChildren?: string;
   styleWrapper?: string;
+  styleChildren?: string;
 }
 
 interface CommonWrapperProps extends WrapperProps {
@@ -39,4 +35,16 @@ const CommonWrapper: FC<CommonWrapperProps> = ({
   );
 };
 
-export { CommonWrapper, type WrapperProps };
+const CommonWrapperForm: FC<WrapperProps> = ({
+  title,
+  children,
+  styleWrapper,
+  styleChildren,
+}) => (
+  <div className={cn("rounded-lg pb-15 shadow-sm px-3 py-3", styleWrapper)}>
+    <p className="text-lg mb-5">{title}</p>
+    <div className={cn(styleChildren)}>{children}</div>
+  </div>
+);
+
+export { CommonWrapper, CommonWrapperForm, type WrapperProps };

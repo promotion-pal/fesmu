@@ -1,1 +1,1 @@
-export { NavigationCardDutyUi, ListFloorsDutyUi } from "./ui";
+export { DutyPreview } from "./ui";

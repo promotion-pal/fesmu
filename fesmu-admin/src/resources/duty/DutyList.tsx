@@ -32,39 +32,6 @@ const facultyMap: Record<FacultyType, string> = {
 };
 
 const DutyList = () => {
-  // const exporter = (duties: Duty[]) => {
-  //   const dutiesForExport = duties.map((duty) => {
-  //     return {
-  //       Дата: new Date(duty.date).toLocaleDateString("ru-RU"),
-  //       Дежурный:
-  //         `${duty.tenant.last_name} ${duty.tenant.first_name} ${duty.tenant.patronymic}`.trim(),
-  //       "Группа и факультет": `${duty.tenant.group} ${facultyMap[duty.tenant.faculty]}`,
-  //       Комната: duty.tenant.room,
-  //     };
-  //   });
-
-  //   jsonExport(
-  //     dutiesForExport,
-  //     {
-  //       headers: ["Дата", "Дежурный", "Группа и факультет", "Комната"],
-  //     },
-  //     (err, csv) => {
-  //       const BOM = "\uFEFF";
-  //       const blob = new Blob([BOM + csv], {
-  //         type: "text/csv;charset=utf-8;",
-  //       });
-  //       const url = URL.createObjectURL(blob);
-  //       const link = document.createElement("a");
-  //       link.href = url;
-  //       link.download = "дежурства.csv";
-  //       document.body.appendChild(link);
-  //       link.click();
-  //       document.body.removeChild(link);
-  //       URL.revokeObjectURL(url);
-  //     },
-  //   );
-  // };
-
   const exporter = (duties: Duty[]) => {
     const filteredByFloor = duties.filter((duty) => {
       return true;

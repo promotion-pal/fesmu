@@ -1,0 +1,1 @@
+export { VocationList } from "./VocationList";

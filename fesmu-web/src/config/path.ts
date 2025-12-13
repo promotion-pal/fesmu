@@ -1,4 +1,4 @@
-interface BasePageProps {
+export interface BasePageProps {
   id?: string | number;
 }
 
@@ -16,6 +16,8 @@ const DYNAMIC_PATH = (
 const ROUTE = {
   MAIN: DYNAMIC_PATH(["/"]),
   DUTY: (props?: BasePageProps) => DYNAMIC_PATH(["duty", props?.id], props),
+  VACATION: (props?: BasePageProps) =>
+    DYNAMIC_PATH(["vacation", props?.id], props),
 };
 
 export { DYNAMIC_PATH, ROUTE };

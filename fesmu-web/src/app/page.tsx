@@ -1,9 +1,11 @@
-import { NavigationCardDutyUi } from "@/widgets/duty";
+import { DutyPreview } from "@/widgets/duty";
+import { VacationPreview } from "@/widgets/vacation";
 
 export default function Home() {
   return (
-    <div className="container">
-      <NavigationCardDutyUi styleWrapper="md:w-[300px] mt-5" />
+    <div className="container flex gap-4 flex-col md:flex-row">
+      <DutyPreview />
+      <VacationPreview />
     </div>
   );
 }

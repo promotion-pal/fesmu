@@ -5,7 +5,8 @@ import {
   fetchUtils,
 } from "react-admin";
 
-const apiUrl = "https://api.fesmu.promotion-pal.ru";
+const apiUrl = import.meta.env.VITE_API_URL ?? "http://localhost:4000";
+
 const httpClient = fetchUtils.fetchJson;
 
 export const dataProvider = {

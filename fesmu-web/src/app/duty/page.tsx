@@ -1,12 +1,11 @@
 import { ROUTE } from "@/config/path";
-import { CommonWrapper } from "@/widgets/common/wrapper";
-import { ListFloorsDutyUi } from "@/widgets/duty";
-import React from "react";
+import { CommonListFloors } from "@/shared/common/floors";
+import { CommonWrapper } from "@/shared/common/wrapper";
 
 export default function DutyPage() {
   return (
     <CommonWrapper back={ROUTE.MAIN} styleWrapper="container pb-10">
-      <ListFloorsDutyUi />
+      <CommonListFloors link={(id) => ROUTE.DUTY(id)} />
     </CommonWrapper>
   );
 }

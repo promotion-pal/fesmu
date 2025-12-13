@@ -15,6 +15,7 @@ const typeorm_1 = require("@nestjs/typeorm");
 const tenants_module_1 = require("./tenants/tenants.module");
 const floors_module_1 = require("./floors/floors.module");
 const duty_module_1 = require("./duty/duty.module");
+const vocations_module_1 = require("./vocations/vocations.module");
 let AppModule = class AppModule {
 };
 exports.AppModule = AppModule;
@@ -41,6 +42,7 @@ exports.AppModule = AppModule = __decorate([
             tenants_module_1.TenantsModule,
             floors_module_1.FloorsModule,
             duty_module_1.DutyModule,
+            vocations_module_1.VocationsModule,
         ],
         controllers: [app_controller_1.AppController],
         providers: [app_service_1.AppService],

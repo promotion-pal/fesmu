@@ -6,25 +6,12 @@ import { Duty } from "@/features/api/duty";
 import { CommonFrom } from "@/features/form";
 import { CommonSelectFields, CommonTextField } from "@/features/form/fields";
 import { CalendarDuty } from "@/shared/calendar-duty";
-import { cn } from "@/shared/lib/utils";
 import { Button } from "@/shared/ui/button";
-import { CommonWrapper, WrapperProps } from "@/widgets/common/wrapper";
+import { CommonWrapper, CommonWrapperForm } from "@/shared/common/wrapper";
 import { schemaTenantDuty } from "@/widgets/duty/schema";
 import { useParams, useRouter } from "next/navigation";
-import { FC, useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef } from "react";
 import { toast } from "sonner";
-
-const WrapperForm: FC<WrapperProps> = ({
-  title,
-  children,
-  styleWrapper,
-  styleChildren,
-}) => (
-  <div className={cn("rounded-lg shadow-sm px-3 py-3", styleWrapper)}>
-    <p className="text-lg mb-5">{title}</p>
-    <div className={cn(styleChildren)}>{children}</div>
-  </div>
-);
 
 const getCurrentVladivostokHour = (): string => {
   const now = new Date();
@@ -148,7 +135,7 @@ export default function RecordDutyPage() {
 
           return (
             <>
-              <WrapperForm
+              <CommonWrapperForm
                 title="Данные"
                 styleChildren="grid md:grid-cols-3 items-center gap-4"
               >
@@ -221,7 +208,7 @@ export default function RecordDutyPage() {
                   placeholder="Пример: 209"
                   allowedPattern={/^[0-9]{0,3}$/}
                 />
-              </WrapperForm>
+              </CommonWrapperForm>
 
               <div className="mt-6">
                 <CalendarDuty

@@ -8,8 +8,8 @@ async function bootstrap() {
     const app = await core_1.NestFactory.create(app_module_1.AppModule);
     const configService = app.get(config_1.ConfigService);
     const PORT = 4000;
-    const ADMIN_URL = configService.getOrThrow('ADMIN_URL', 'http://localhost:4173');
-    const SITE_URL = configService.getOrThrow('SITE_URL', 'http://localhost:3000');
+    const ADMIN_URL = configService.getOrThrow('BACK_ADMIN_URL', 'http://localhost:4173');
+    const SITE_URL = configService.getOrThrow('BACK_SITE_URL', 'http://localhost:3000');
     app.enableCors({
         origin: [ADMIN_URL, SITE_URL],
         credentials: true,

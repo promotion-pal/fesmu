@@ -18,7 +18,7 @@ services:
       dockerfile: Dockerfile
     container_name: fesmu-backend
     env_file:
-      - .env
+      - ./.env
     depends_on:
       - postgres
     restart: unless-stopped
@@ -26,11 +26,9 @@ services:
       - traefik-network
     labels:
       - "traefik.enable=true"
-      # HTTP роутер (перенаправление на HTTPS)
       - "traefik.http.routers.fesmu-api.rule=Host(`api.fesmu.promotion-pal.ru`)"
       - "traefik.http.routers.fesmu-api.entrypoints=web"
       - "traefik.http.routers.fesmu-api.middlewares=redirect-to-https"
-      # HTTPS роутер (основной)
       - "traefik.http.routers.fesmu-api-secure.rule=Host(`api.fesmu.promotion-pal.ru`)"
       - "traefik.http.routers.fesmu-api-secure.entrypoints=websecure"
       - "traefik.http.routers.fesmu-api-secure.tls.certresolver=letsencrypt"
@@ -42,7 +40,7 @@ services:
       dockerfile: Dockerfile
     container_name: fesmu-web
     env_file:
-      - .env
+      - ./.env
     depends_on:
       - backend
     restart: unless-stopped
@@ -64,7 +62,7 @@ services:
       dockerfile: Dockerfile
     container_name: fesmu-admin
     env_file:
-      - .env
+      - ./.env
     depends_on:
       - backend
     restart: unless-stopped

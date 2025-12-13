@@ -20,12 +20,14 @@ import { Textarea } from "@/shared/ui/textarea";
 import { cva, VariantProps } from "class-variance-authority";
 import { Loader2, Loader2Icon } from "lucide-react";
 import { useState } from "react";
-import {
-  Controller,
-  FieldPath,
-  FieldValues,
-  UseFormReturn,
-} from "react-hook-form";
+import { FieldPath, FieldValues, UseFormReturn } from "react-hook-form";
+import * as React from "react";
+import { ChevronDownIcon } from "lucide-react";
+import { Button } from "@/shared/ui/button";
+import { Calendar } from "@/shared/ui/calendar";
+import { Popover, PopoverContent, PopoverTrigger } from "@/shared/ui/popover";
+import { format } from "date-fns";
+import { ru } from "date-fns/locale";
 
 export interface BaseFieldsType<T extends FieldValues> {
   form: UseFormReturn<T>;
@@ -297,69 +299,6 @@ interface CheckboxListFields<T extends FieldValues>
   //   options: DictionariesType[];
 }
 
-// const CommonListCheckboxFields = <T extends FieldValues>({
-//   form,
-//   name,
-//   label,
-// //   options,
-//   isDisable = false,
-//   className,
-//   variant,
-//   inputVariant,
-// }: CheckboxListFields<T>) => {
-//   return (
-//     <FormField
-//       control={form.control}
-//       name={name}
-//       render={({ field }) => (
-//         <FormItem className={cn("relative space-y-3", className)}>
-//           {label && <FormLabel>{label}</FormLabel>}
-
-//           <FormControl>
-//             <div className="flex flex-wrap gap-5">
-//               {options.map((option) => (
-//                 <Controller
-//                   key={option.id}
-//                   control={form.control}
-//                   name={name}
-//                   render={({ field: controllerField }) => {
-//                     const values = controllerField.value || [];
-//                     const isChecked = values.includes(option.id);
-
-//                     return (
-//                       <div className="flex items-center gap-2">
-//                         <input
-//                           type="checkbox"
-//                           checked={isChecked}
-//                           disabled={isDisable}
-//                           onChange={(e) => {
-//                             const newValues = e.target.checked
-//                               ? [...values, option.id]
-//                               : values.filter((id: number) => id !== option.id);
-//                             controllerField.onChange(newValues);
-//                           }}
-//                           className={cn(
-//                             "w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500",
-//                             "text-green-600 focus:ring-green-500"
-//                           )}
-//                         />
-//                         <label className="text-sm font-medium text-gray-700">
-//                           {option.title}
-//                         </label>
-//                       </div>
-//                     );
-//                   }}
-//                 />
-//               ))}
-//             </div>
-//           </FormControl>
-//           <FormMessage />
-//         </FormItem>
-//       )}
-//     />
-//   );
-// };
-
 export interface CommonSelectType {
   key: string | number;
   value: string;
@@ -418,3 +357,106 @@ const CommonSelectFields = <T extends FieldValues>({
 };
 
 export { CommonSelectFields };
+
+export interface CommonDatePickerProps<T extends FieldValues>
+  extends BaseFieldsType<T> {
+  minDate?: Date;
+  maxDate?: Date;
+  dateFormat?: string;
+  showYearDropdown?: boolean;
+  showMonthDropdown?: boolean;
+  fromYear?: number;
+  toYear?: number;
+}
+
+const CommonDatePicker = <T extends FieldValues>({
+  form,
+  name,
+  label,
+  placeholder = "Select date",
+  isDisable = false,
+  className,
+  isLoad,
+  minDate,
+  maxDate,
+  dateFormat = "PPP",
+}: CommonDatePickerProps<T>) => {
+  const [open, setOpen] = React.useState(false);
+
+  const date = form.watch(name);
+
+  const handleSelect = (selectedDate: Date | undefined) => {
+    form.setValue(name, selectedDate as any, {
+      shouldValidate: true,
+      shouldDirty: true,
+    });
+    setOpen(false);
+  };
+
+  const error = form.formState.errors[name];
+  const isInvalid = !!error;
+
+  return (
+    <div className={cn("flex flex-col gap-2", className)}>
+      {label && <FormLabel className={cn("text-gray-500")}>{label}</FormLabel>}
+
+      <Popover open={open} onOpenChange={setOpen}>
+        <PopoverTrigger asChild>
+          <Button
+            variant="outline"
+            id={name}
+            disabled={isDisable || isLoad}
+            className={cn(
+              "w-full justify-between font-normal",
+              isInvalid && "border-red-500 focus:ring-red-500",
+              isDisable && "opacity-50 cursor-not-allowed"
+            )}
+            type="button"
+          >
+            <span className={cn(!date && "text-muted-foreground")}>
+              {date
+                ? format(new Date(date), dateFormat, { locale: ru })
+                : placeholder}
+            </span>
+            <ChevronDownIcon
+              className={cn(
+                "h-4 w-4 transition-transform",
+                open && "rotate-180"
+              )}
+            />
+          </Button>
+        </PopoverTrigger>
+
+        <PopoverContent
+          className="w-auto p-0"
+          align="start"
+          onInteractOutside={(e) => {
+            e.preventDefault();
+          }}
+        >
+          <Calendar
+            mode="single"
+            selected={date ? new Date(date) : undefined}
+            onSelect={handleSelect}
+            disabled={(date) =>
+              (minDate && date < minDate) ||
+              (maxDate && date > maxDate) ||
+              false
+            }
+            classNames={{
+              day_selected:
+                "bg-primary text-primary-foreground hover:bg-primary hover:text-primary-foreground",
+              day_today: "bg-accent text-accent-foreground",
+            }}
+          />
+        </PopoverContent>
+      </Popover>
+
+      {error && (
+        <p className="text-sm text-red-500 px-1">{error.message as string}</p>
+      )}
+    </div>
+  );
+};
+
+export { CommonDatePicker };
