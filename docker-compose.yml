@@ -18,7 +18,7 @@ services:
       dockerfile: Dockerfile
     container_name: fesmu-backend
     env_file:
-      - ./.env
+      - .env
     depends_on:
       - postgres
     restart: unless-stopped
