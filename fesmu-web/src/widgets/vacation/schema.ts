@@ -16,7 +16,7 @@ const schemaVacation = z
   })
   .refine(
     (data) => {
-      return data.departureDate > data.arrivalDate;
+      return data.arrivalDate > data.departureDate;
     },
     {
       message: "Дата уезда должна быть позже даты приезда",

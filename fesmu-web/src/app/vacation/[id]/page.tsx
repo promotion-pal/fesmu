@@ -34,12 +34,6 @@ export default function RecordVocationPage() {
           floorNumber: Number(id),
         }}
         onSubmit={async (data) => {
-          // const payload = {
-          //   ...data,
-          //   arrival_date: data.arrival_date.toISOString(),
-          //   departure_date: data.departure_date.toISOString(),
-          // };
-
           try {
             await vocationService.create(data);
             toast.success("Запись сохранена");
