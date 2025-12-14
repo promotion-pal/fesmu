@@ -1,7 +1,6 @@
 import { ROUTE } from "@/config/path";
 import { CommonListFloors } from "@/shared/common/floors";
 import { CommonWrapper } from "@/shared/common/wrapper";
-import React from "react";
 
 export default function VacationPage() {
   return (
