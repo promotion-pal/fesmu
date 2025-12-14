@@ -1,5 +1,6 @@
-# FROM node:18-alpine 
-FROM mirror.gcr.io/library/node:18-alpine
+FROM node:18-alpine
+
+ARG VITE_API_URL
 
 RUN npm install -g pnpm
 
@@ -10,6 +11,8 @@ COPY package.json pnpm-lock.yaml* ./
 RUN pnpm install
 
 COPY . .
+
+ENV VITE_API_URL=${VITE_API_URL}
 
 RUN pnpm run build
 

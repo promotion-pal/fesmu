@@ -62,9 +62,11 @@ services:
     build:
       context: ./fesmu-admin
       dockerfile: Dockerfile
+      args:
+        - VITE_API_URL=${VITE_API_URL}
     container_name: fesmu-admin
     env_file:
-      - ./.env
+      - .env
     depends_on:
       - backend
     restart: unless-stopped
