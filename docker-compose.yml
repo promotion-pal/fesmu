@@ -38,9 +38,11 @@ services:
     build:
       context: ./fesmu-web
       dockerfile: Dockerfile
+      args:
+        - NEXT_PUBLIC_API_URL=${NEXT_PUBLIC_API_URL}
     container_name: fesmu-web
     env_file:
-      - ./.env
+      - .env
     depends_on:
       - backend
     restart: unless-stopped

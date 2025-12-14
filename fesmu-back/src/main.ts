@@ -34,6 +34,5 @@ async function bootstrap() {
   );
 
   await app.listen(PORT);
-  console.log(SITE_URL);
 }
 bootstrap();
