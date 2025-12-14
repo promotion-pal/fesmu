@@ -34,6 +34,8 @@ export default function RecordVocationPage() {
           floorNumber: Number(id),
         }}
         onSubmit={async (data) => {
+          setLoading(true);
+
           try {
             await vocationService.create(data);
             toast.success("Запись сохранена");
@@ -43,6 +45,8 @@ export default function RecordVocationPage() {
           } catch (error) {
             console.log(error);
             toast.success("Не удалось сохранить запись");
+          } finally {
+            setLoading(false);
           }
         }}
       >
@@ -95,7 +99,7 @@ export default function RecordVocationPage() {
                 />
               </div>
 
-              <Button type="submit" className="mt-10 w-full">
+              <Button disabled={loading} type="submit" className="mt-10 w-full">
                 Сохранить
               </Button>
 
