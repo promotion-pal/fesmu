@@ -89,15 +89,15 @@ export default function RecordVocationPage() {
                 />
 
                 <CommonDatePicker
-                  label="Дата приезда"
+                  label="Дата отъезда"
                   form={form}
-                  name="arrivalDate"
+                  name="departureDate"
                 />
 
                 <CommonDatePicker
-                  label="Дата уезда"
+                  label="Дата приезда"
                   form={form}
-                  name="departureDate"
+                  name="arrivalDate"
                 />
               </div>
 

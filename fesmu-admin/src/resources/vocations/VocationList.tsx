@@ -13,8 +13,8 @@ const VocationList = () => {
         <NumberField source="floorNumber" label="Этаж" />
         <TextField source="room" label="Комната" />
 
-        <DateField source="arrivalDate" label="Дата выезда" />
-        <DateField source="departureDate" label="Дата возврата" />
+        <DateField source="arrivalDate" label="Дата прибытия" />
+        <DateField source="departureDate" label="Дата отъезда" />
         <DateField source="createdAt" label="Создано" />
       </Datagrid>
     </List>
