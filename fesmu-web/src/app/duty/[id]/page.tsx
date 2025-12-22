@@ -87,16 +87,16 @@ export default function RecordDutyPage() {
             }
 
             if (course === 4 || course === 5) {
-              if (currentHour < 17 || currentHour >= 19) {
+              if (currentHour < 19 || currentHour >= 20) {
                 toast.error(
-                  "4-5 курс может записываться только с 17:00 до 19:00"
+                  "4-5 курс может записываться только с 19:00 до 20:00"
                 );
                 return;
               }
             } else if (course >= 1 && course <= 3) {
-              if (currentHour < 19 || currentHour >= 23) {
+              if (currentHour < 21 || currentHour >= 23) {
                 toast.error(
-                  "1-3 курс может записываться только с 19:00 до 23:00"
+                  "1-3 курс может записываться только с 21:00 до 23:00"
                 );
                 return;
               }
@@ -222,9 +222,17 @@ export default function RecordDutyPage() {
                 <CalendarDuty
                   form={form}
                   name="date"
-                  disabledDates={duty.map(
-                    (item) => new Date(item.date) || loading
-                  )}
+                  // disabledDates={duty.map(
+                  //   (item) => new Date(item.date) || loading
+                  // )}
+
+                  disabledDates={
+                    Array.isArray(duty)
+                      ? duty
+                          .filter((item) => item?.date)
+                          .map((item) => new Date(item.date))
+                      : []
+                  }
                 />
               </div>
 
