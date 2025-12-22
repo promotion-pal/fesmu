@@ -78,6 +78,14 @@ export default function RecordDutyPage() {
             const course = parseInt(data.group.charAt(0));
             const currentHour = +getCurrentVladivostokHour();
 
+            const selectedDate = new Date(data.date);
+            const dayOfWeek = selectedDate.getDay();
+
+            if (course === 1 && (dayOfWeek === 0 || dayOfWeek === 6)) {
+              toast.error("1 курс не может записываться на выходные дни");
+              return;
+            }
+
             if (course === 4 || course === 5) {
               if (currentHour < 17 || currentHour >= 19) {
                 toast.error(
