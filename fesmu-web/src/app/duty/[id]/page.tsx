@@ -87,7 +87,7 @@ export default function RecordDutyPage() {
             }
 
             if (course === 4 || course === 5) {
-              if (currentHour < 19 || currentHour >= 20) {
+              if (currentHour < 15 || currentHour >= 20) {
                 toast.error(
                   "4-5 курс может записываться только с 19:00 до 20:00",
                 );
