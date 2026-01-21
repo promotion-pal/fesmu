@@ -6,6 +6,7 @@ export default function Home() {
     <div className="container flex gap-4 pb-10 flex-col md:flex-row">
       <DutyPreview />
       <VacationPreview />
+      {/* <BoardPreview /> */}
     </div>
   );
 }

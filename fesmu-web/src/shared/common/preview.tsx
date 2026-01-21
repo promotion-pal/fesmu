@@ -1,8 +1,7 @@
-import { ROUTE } from "@/config/path";
 import { cn } from "@/shared/lib/utils";
 import { Button } from "@/shared/ui/button";
 import { Card, CardFooter, CardHeader, CardTitle } from "@/shared/ui/card";
-import { ArrowRightCircleIcon, ChevronRightIcon } from "lucide-react";
+import { ArrowRightCircleIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { FC } from "react";
@@ -12,18 +11,20 @@ interface CommonPreviewCardProps extends CommonStyle {
   img: string;
   link: string;
   title: string;
+  action: string;
 }
 const CommonPreviewCard: FC<CommonPreviewCardProps> = ({
   img,
   link,
   title,
+  action,
   styleWrapper,
 }) => {
   return (
     <Card
       className={cn(
         "group overflow-hidden py-0 md:w-[300px] pb-4 border-0 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1",
-        styleWrapper
+        styleWrapper,
       )}
     >
       <Link href={link} className="block h-full">
@@ -50,7 +51,7 @@ const CommonPreviewCard: FC<CommonPreviewCardProps> = ({
             asChild
           >
             <div>
-              <span className="font-medium">Записаться</span>
+              <span className="font-medium">{action}</span>
               <ArrowRightCircleIcon className="h-5 w-5 transition-transform group-hover:translate-x-1" />
             </div>
           </Button>

@@ -89,20 +89,20 @@ export default function RecordDutyPage() {
             if (course === 4 || course === 5) {
               if (currentHour < 19 || currentHour >= 20) {
                 toast.error(
-                  "4-5 курс может записываться только с 19:00 до 20:00"
+                  "4-5 курс может записываться только с 19:00 до 20:00",
                 );
                 return;
               }
             } else if (course >= 1 && course <= 3) {
-              if (currentHour < 21 || currentHour >= 23) {
+              if (currentHour < 15 || currentHour >= 23) {
                 toast.error(
-                  "1-3 курс может записываться только с 21:00 до 23:00"
+                  "1-3 курс может записываться только с 21:00 до 23:00",
                 );
                 return;
               }
             } else {
               toast.error(
-                "Некорректный номер группы. Первая цифра должна быть курсом (1-5)"
+                "Некорректный номер группы. Первая цифра должна быть курсом (1-5)",
               );
               return;
             }
