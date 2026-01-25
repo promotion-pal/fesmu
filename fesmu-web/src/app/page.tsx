@@ -1,12 +1,5 @@
-import { DutyPreview } from "@/widgets/duty";
-import { VacationPreview } from "@/widgets/vacation";
+"use client";
 
-export default function Home() {
-  return (
-    <div className="container flex gap-4 pb-10 flex-col md:flex-row">
-      <DutyPreview />
-      <VacationPreview />
-      {/* <BoardPreview /> */}
-    </div>
-  );
+export default function page() {
+  return <div></div>;
 }
