@@ -14,8 +14,9 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.FloorsController = void 0;
 const common_1 = require("@nestjs/common");
+const swagger_1 = require("@nestjs/swagger");
 const floors_service_1 = require("./floors.service");
-const create_floor_dto_1 = require("./dto/create-floor.dto");
+const floor_dto_1 = require("./dto/floor.dto");
 let FloorsController = class FloorsController {
     floorsService;
     constructor(floorsService) {
@@ -24,25 +25,56 @@ let FloorsController = class FloorsController {
     async findAll() {
         return await this.floorsService.findAll();
     }
-    async create(createFloorDto) {
-        return await this.floorsService.create(createFloorDto);
+    async create(dto) {
+        return await this.floorsService.create(dto);
     }
 };
 exports.FloorsController = FloorsController;
 __decorate([
     (0, common_1.Get)(),
+    (0, swagger_1.ApiOperation)({
+        summary: 'Получить все этажи',
+        description: 'Возвращает список всех этажей в системе',
+    }),
+    (0, swagger_1.ApiResponse)({
+        status: 200,
+        description: 'Список этажей успешно получен',
+        type: [floor_dto_1.FloorDto],
+    }),
+    (0, swagger_1.ApiResponse)({
+        status: 500,
+        description: 'Внутренняя ошибка сервера',
+    }),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", Promise)
 ], FloorsController.prototype, "findAll", null);
 __decorate([
     (0, common_1.Post)(),
+    (0, swagger_1.ApiOperation)({
+        summary: 'Создать новый этаж',
+        description: 'Создает новый этаж с указанными параметрами',
+    }),
+    (0, swagger_1.ApiResponse)({
+        status: 201,
+        description: 'Этаж успешно создан',
+        type: floor_dto_1.FloorDto,
+    }),
+    (0, swagger_1.ApiResponse)({
+        status: 400,
+        description: 'Неверные входные данные',
+    }),
+    (0, swagger_1.ApiResponse)({
+        status: 409,
+        description: 'Этаж с таким номером уже существует',
+    }),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [create_floor_dto_1.CreateFloorDto]),
+    __metadata("design:paramtypes", [floor_dto_1.FloorDto]),
     __metadata("design:returntype", Promise)
 ], FloorsController.prototype, "create", null);
 exports.FloorsController = FloorsController = __decorate([
+    (0, swagger_1.ApiTags)('floors'),
     (0, common_1.Controller)('floors'),
     __metadata("design:paramtypes", [floors_service_1.FloorsService])
 ], FloorsController);

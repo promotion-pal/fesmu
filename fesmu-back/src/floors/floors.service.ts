@@ -2,7 +2,7 @@ import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { FloorEntity } from './entities/floor.entity';
 import { FindOptionsWhere, Repository } from 'typeorm';
-import { CreateFloorDto } from './dto/create-floor.dto';
+import { FloorDto } from './dto/floor.dto';
 
 @Injectable()
 export class FloorsService {
@@ -15,7 +15,7 @@ export class FloorsService {
     return await this.floorRepository.find();
   }
 
-  async create(dto: CreateFloorDto) {
+  async create(dto: FloorDto) {
     const floor = this.floorRepository.create(dto);
     return await this.floorRepository.save(floor);
   }

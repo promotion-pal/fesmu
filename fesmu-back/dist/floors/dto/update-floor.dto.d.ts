@@ -1,5 +1,5 @@
-import { CreateFloorDto } from './create-floor.dto';
-declare const UpdateFloorDto_base: import("@nestjs/mapped-types").MappedType<Partial<CreateFloorDto>>;
-export declare class UpdateFloorDto extends UpdateFloorDto_base {
+import { FloorCreateDto } from './create-floor.dto';
+declare const FloorUpdateDto_base: import("@nestjs/mapped-types").MappedType<Partial<FloorCreateDto>>;
+export declare class FloorUpdateDto extends FloorUpdateDto_base {
 }
 export {};

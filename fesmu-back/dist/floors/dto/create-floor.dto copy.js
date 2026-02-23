@@ -39,4 +39,4 @@ __decorate([
     (0, class_validator_1.IsNumber)(),
     __metadata("design:type", Number)
 ], FloorCreateDto.prototype, "number", void 0);
-//# sourceMappingURL=create-floor.dto.js.map
+//# sourceMappingURL=create-floor.dto%20copy.js.map

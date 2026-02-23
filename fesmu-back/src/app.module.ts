@@ -22,7 +22,7 @@ import { VocationsModule } from './vocations/vocations.module';
         username: configService.getOrThrow<string>('POSTGRES_USER', 'root'),
         password: configService.getOrThrow<string>(
           'POSTGRES_PASSWORD',
-          'password123',
+          'password',
         ),
         database: configService.getOrThrow<string>('POSTGRES_DB', 'fesmu'),
         autoLoadEntities: true,

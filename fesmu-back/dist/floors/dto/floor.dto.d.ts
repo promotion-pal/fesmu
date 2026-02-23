@@ -1,4 +1,4 @@
-export declare class FloorCreateDto {
+export declare class FloorDto {
     elder: string;
     number: number;
 }

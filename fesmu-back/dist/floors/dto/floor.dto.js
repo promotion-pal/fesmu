@@ -9,14 +9,14 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.FloorCreateDto = void 0;
+exports.FloorDto = void 0;
 const class_validator_1 = require("class-validator");
 const swagger_1 = require("@nestjs/swagger");
-class FloorCreateDto {
+class FloorDto {
     elder;
     number;
 }
-exports.FloorCreateDto = FloorCreateDto;
+exports.FloorDto = FloorDto;
 __decorate([
     (0, swagger_1.ApiProperty)({
         description: 'ФИО или идентификатор старосты этажа',
@@ -26,7 +26,7 @@ __decorate([
     }),
     (0, class_validator_1.IsString)(),
     __metadata("design:type", String)
-], FloorCreateDto.prototype, "elder", void 0);
+], FloorDto.prototype, "elder", void 0);
 __decorate([
     (0, swagger_1.ApiProperty)({
         description: 'Номер этажа',
@@ -38,5 +38,5 @@ __decorate([
     }),
     (0, class_validator_1.IsNumber)(),
     __metadata("design:type", Number)
-], FloorCreateDto.prototype, "number", void 0);
-//# sourceMappingURL=create-floor.dto.js.map
+], FloorDto.prototype, "number", void 0);
+//# sourceMappingURL=floor.dto.js.map

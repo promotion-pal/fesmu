@@ -2,10 +2,10 @@
 
 import { DutyPreview } from "@/widgets/duty";
 
-export default function page() {
+export default function Index() {
   return (
-    <div>
+    <main className="container">
       <DutyPreview />
-    </div>
+    </main>
   );
 }

@@ -32,7 +32,7 @@ exports.AppModule = AppModule = __decorate([
                     host: configService.getOrThrow('POSTGRES_HOST', 'localhost'),
                     port: configService.getOrThrow('POSTGRES_PORT', 5432),
                     username: configService.getOrThrow('POSTGRES_USER', 'root'),
-                    password: configService.getOrThrow('POSTGRES_PASSWORD', 'password123'),
+                    password: configService.getOrThrow('POSTGRES_PASSWORD', 'password'),
                     database: configService.getOrThrow('POSTGRES_DB', 'fesmu'),
                     autoLoadEntities: true,
                     synchronize: true,
