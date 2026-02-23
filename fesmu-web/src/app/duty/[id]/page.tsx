@@ -94,7 +94,7 @@ export default function RecordDutyPage() {
                 return;
               }
             } else if (course >= 1 && course <= 3) {
-              if (currentHour < 18 || currentHour >= 23) {
+              if (currentHour < 21 || currentHour >= 23) {
                 toast.error(
                   "1-3 курс может записываться только с 21:00 до 23:00",
                 );
