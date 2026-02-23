@@ -1,6 +1,6 @@
 import { Body, Controller, Get, Post } from '@nestjs/common';
 import { VocationsService } from './vocations.service';
-import { CreateVocationDto } from './dto/create-vocations.dto';
+import { VocationDto } from './dto/vocations.dto';
 
 @Controller('vocations')
 export class VocationsController {
@@ -12,8 +12,7 @@ export class VocationsController {
   }
 
   @Post()
-  async create(@Body() dto: CreateVocationDto) {
-    console.log(dto);
+  async create(@Body() dto: VocationDto) {
     return await this.vocationsService.create(dto);
   }
 }

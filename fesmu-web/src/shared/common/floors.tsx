@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import { FC } from "react";
 import { cn } from "../lib/utils";
 import { CommonStyle } from "../types/style";
 import Link from "next/link";
@@ -17,7 +17,7 @@ const CommonListFloors: FC<CommonListFloorsProps> = ({
 }) => {
   const list = floors || Array.from({ length: 14 }, (_, i) => i + 1);
 
-  const filteredFloors = list.filter((floor) => ![1, 6, 7].includes(floor));
+  const filteredFloors = list.filter((floor) => ![1, 7].includes(floor));
 
   return (
     <div className={cn("space-y-4", styleWrapper)}>
@@ -26,7 +26,7 @@ const CommonListFloors: FC<CommonListFloorsProps> = ({
           key={floor}
           href={link({ id: floor })}
           className={cn(
-            "rounded-lg px-2 py-2 flex justify-between items-center bg-zinc-50 hover:bg-zinc-100 transition-colors"
+            "rounded-lg px-2 py-2 flex justify-between items-center bg-zinc-50 hover:bg-zinc-100 transition-colors",
           )}
         >
           <p className="font-medium">{floor} Этаж</p>

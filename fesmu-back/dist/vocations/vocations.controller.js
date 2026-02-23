@@ -15,7 +15,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.VocationsController = void 0;
 const common_1 = require("@nestjs/common");
 const vocations_service_1 = require("./vocations.service");
-const create_vocations_dto_1 = require("./dto/create-vocations.dto");
+const vocations_dto_1 = require("./dto/vocations.dto");
 let VocationsController = class VocationsController {
     vocationsService;
     constructor(vocationsService) {
@@ -25,7 +25,6 @@ let VocationsController = class VocationsController {
         return await this.vocationsService.get();
     }
     async create(dto) {
-        console.log(dto);
         return await this.vocationsService.create(dto);
     }
 };
@@ -40,7 +39,7 @@ __decorate([
     (0, common_1.Post)(),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [create_vocations_dto_1.CreateVocationDto]),
+    __metadata("design:paramtypes", [vocations_dto_1.VocationDto]),
     __metadata("design:returntype", Promise)
 ], VocationsController.prototype, "create", null);
 exports.VocationsController = VocationsController = __decorate([
